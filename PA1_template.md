@@ -1,4 +1,11 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: yes
+    theme: united
+    toc: yes
+---
 ## Overview
 I submit this file as part of Peer Assessment 1 for the Coursera course *Reproducible Research*.
 
@@ -47,6 +54,7 @@ require('ggplot2')
 
 ```
 ## Loading required package: ggplot2
+## Need help? Try the ggplot2 mailing list: http://groups.google.com/group/ggplot2.
 ```
 
 ```r
@@ -78,11 +86,11 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] lubridate_1.3.3 ggplot2_1.0.1   dplyr_0.4.3    
+## [1] lubridate_1.3.3 ggplot2_1.0.1   dplyr_0.4.3     knitr_1.11     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.1      knitr_1.11       magrittr_1.5     MASS_7.3-44     
-##  [5] munsell_0.4.2    colorspace_1.2-6 R6_2.1.1         stringr_1.0.0   
+##  [1] Rcpp_0.12.1      magrittr_1.5     MASS_7.3-44      munsell_0.4.2   
+##  [5] colorspace_1.2-6 R6_2.1.1         stringr_1.0.0    highr_0.5.1     
 ##  [9] plyr_1.8.3       tools_3.2.2      parallel_3.2.2   grid_3.2.2      
 ## [13] gtable_0.1.2     DBI_0.3.1        htmltools_0.2.6  yaml_2.1.13     
 ## [17] assertthat_0.1   digest_0.6.8     reshape2_1.4.1   formatR_1.2.1   
@@ -196,7 +204,7 @@ qplot(date, totalSteps, data=stepsPerDay, geom="bar", stat="identity") +
 ## Warning: Removed 8 rows containing missing values (position_stack).
 ```
 
-![](figure/unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
 It is clear that the warning from 8 days are completely missing, which is as expected from the `summary` output.
 
@@ -208,7 +216,7 @@ qplot(totalSteps, data=stepsPerDay, geom = "histogram", binwidth=1000) +
      labs(title="Total daily steps", x="Steps/day", y="Frequency")
 ```
 
-![](figure/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 
 The histogram suggests significant variation in the number of steps per day, but we cannot yet distinguish whether this is because of true variation by day or just because some days have a lot of missing data.
 
@@ -228,7 +236,7 @@ qplot(minute, meanSteps, data=stepsPer5MinuteInterval, geom="line", stat="identi
     labs(title="Steps by time of day", x="Minutes past midnight", y="Mean steps in 5 min interval")
 ```
 
-![](figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
 Translating minutes past midnight into hours, it looks like this person wakes up about 400 minutes into the day--about 6:30am--and goes to sleep around 1400 minutes into the day--about 11:30pm. Both of these values are in line with what we might expect. Note how much better this plot looks compared with this next one using `interval` as the x variable. 
 
@@ -239,7 +247,7 @@ qplot(interval, meanSteps, data=stepsPerOriginalInterval, geom="line", stat="ide
     labs(title="Steps by original interval value", x="Original interval value", y="Mean steps per interval")
 ```
 
-![](figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
 
 The artifactual jumps in the "Steps by orginal interval value" plot are easily seen.
 
@@ -358,7 +366,7 @@ qplot(date, totalSteps, data=stepsPerDayImputed, geom="bar", stat="identity") +
     labs(title="Steps by date (imputed)", x="Date", y="Total daily steps")
 ```
 
-![](figure/unnamed-chunk-22-1.png) 
+![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-22-1.png) 
 
 The days which had no data now have the same value imputed to them (note for example, the first and last days of the series). The first day's data is completely imputed, so the red line shows how many steps we expected on a day in which we had no data. If you examine this plot closely, you can identify all 8 of the days that had no data.
 
@@ -370,7 +378,7 @@ qplot(totalSteps, data=stepsPerDayImputed, geom = "histogram", binwidth=1000) +
      labs(title="Total daily steps (imputed)", x="Steps/day", y="Frequency")
 ```
 
-![](figure/unnamed-chunk-23-1.png) 
+![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-23-1.png) 
 
 The difference between this and the original histogram is barely noticable.
 
@@ -389,7 +397,7 @@ qplot(minute, meanSteps, data=stepsPer5MinuteIntervalImputed, geom="line", stat=
     labs(title="Steps by time of day (imputed)", x="Minutes past midnight", y="Mean steps in 5 min interval")
 ```
 
-![](figure/unnamed-chunk-25-1.png) 
+![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-25-1.png) 
 
 Not only does this daily activity plot from the imputed data look a lot like the same plot from the analytic data, a short calculation shows that, up to rounding error, `stepsPer5MinuteIntervalImputed$steps` and `stepsPer5MinuteInterval$steps` are virtually the same.
 
@@ -433,6 +441,6 @@ ggplot(stepsPer5MinuteIntervalAugmented, aes(x=minute, y=meanSteps, color=weeken
     labs(title="Steps by time of day (weekend vs non-weekend)", x="Minutes past midnight", y="Mean steps in 5 min interval")
 ```
 
-![](figure/unnamed-chunk-29-1.png) 
+![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29-1.png) 
 
 These data suggest that the individual tends to wake up later on the weekends and gets less exercise in the morning on these days. Also, there doesn't seem to much difference in bedtime between weekend and non-weekend days.
