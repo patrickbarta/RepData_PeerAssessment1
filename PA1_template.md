@@ -32,47 +32,14 @@ Processing is done in the following R environment:
 
 ```r
 require('dplyr')
-```
-
-```
-## Loading required package: dplyr
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 require('ggplot2')
-```
-
-```
-## Loading required package: ggplot2
-## Need help? Try the ggplot2 mailing list: http://groups.google.com/group/ggplot2.
-```
-
-```r
 require('lubridate')
-```
-
-```
-## Loading required package: lubridate
-```
-
-```r
 sessionInfo()
 ```
 
 ```
-## R version 3.2.2 (2015-08-14)
+## R version 3.1.2 (2014-10-31)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 15.04
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -86,16 +53,16 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] lubridate_1.3.3 ggplot2_1.0.1   dplyr_0.4.3     knitr_1.11     
+## [1] lubridate_1.3.3 ggplot2_1.0.1   dplyr_0.4.3    
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.1      magrittr_1.5     MASS_7.3-44      munsell_0.4.2   
-##  [5] colorspace_1.2-6 R6_2.1.1         stringr_1.0.0    highr_0.5.1     
-##  [9] plyr_1.8.3       tools_3.2.2      parallel_3.2.2   grid_3.2.2      
-## [13] gtable_0.1.2     DBI_0.3.1        htmltools_0.2.6  yaml_2.1.13     
-## [17] assertthat_0.1   digest_0.6.8     reshape2_1.4.1   formatR_1.2.1   
-## [21] memoise_0.2.1    evaluate_0.8     rmarkdown_0.8    stringi_0.5-5   
-## [25] scales_0.3.0     proto_0.3-10
+##  [1] assertthat_0.1   colorspace_1.2-6 DBI_0.3.1        digest_0.6.8    
+##  [5] evaluate_0.8     formatR_1.2.1    grid_3.1.2       gtable_0.1.2    
+##  [9] htmltools_0.2.6  knitr_1.11       labeling_0.3     lazyeval_0.1.10 
+## [13] magrittr_1.5     MASS_7.3-37      memoise_0.2.1    munsell_0.4.2   
+## [17] parallel_3.1.2   plyr_1.8.3       proto_0.3-10     R6_2.1.1        
+## [21] Rcpp_0.12.1      reshape2_1.4.1   rmarkdown_0.8    scales_0.3.0    
+## [25] stringi_0.5-5    stringr_1.0.0    tools_3.1.2      yaml_2.1.13
 ```
 
 I set the following global options to `knitr` so that copies of all figures go into the `figure/` directory.
@@ -206,7 +173,7 @@ qplot(date, totalSteps, data=stepsPerDay, geom="bar", stat="identity") +
 
 ![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
-It is clear that the warning from 8 days are completely missing, which is as expected from the `summary` output.
+It is clear that the warning that data from 8 days are completely missing, which is as expected from the `summary` output.
 
 We're most interested in the total steps per day, so we compute a histogram.
 
