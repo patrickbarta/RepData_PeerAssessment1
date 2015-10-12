@@ -112,7 +112,7 @@ qplot(date, totalSteps, data=stepsPerDay, geom="bar", stat="identity") +
     labs(title="Steps by date", x="Date", y="Total daily steps")
 ```
 
-It is clear that the warning from 8 days are completely missing, which is as expected from the `summary` output.
+It is clear that the warning that data from 8 days are completely missing, which is as expected from the `summary` output.
 
 We're most interested in the total steps per day, so we compute a histogram.
 
